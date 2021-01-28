@@ -3,38 +3,8 @@
 .landing {
   width: 100%;
   flex: 1;
-  background: -webkit-linear-gradient(
-    to right,
-    $black,
-    $gradient-color-01,
-    $gradient-color-01,
-    $gradient-color-02,
-    $gradient-color-03,
-    $gradient-color-04,
-    $gradient-color-05,
-    $gradient-color-06,
-    $gradient-color-07,
-    $gradient-color-08,
-    $gradient-color-09,
-    $gradient-color-10,
-    $gradient-color-11
-  );
-  background: linear-gradient(
-    to right,
-    $black,
-    $gradient-color-01,
-    $gradient-color-02,
-    $gradient-color-03,
-    $gradient-color-04,
-    $gradient-color-05,
-    $gradient-color-06,
-    $gradient-color-07,
-    $gradient-color-08,
-    $gradient-color-09,
-    $gradient-color-10,
-    $gradient-color-11
-  );
-
+  background: $main-bg-gradient-webkit;
+  background: $main-bg-gradient;
   &__text {
     width: 60%;
   }
@@ -56,8 +26,9 @@
     }
   }
   &__image-wrapper {
-    width: 35%;
-    height: 50.5rem;
+    width: 40%;
+    max-width: 50rem;
+    height: 50rem;
   }
   &__image {
     width: 100%;

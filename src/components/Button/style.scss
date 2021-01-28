@@ -5,6 +5,9 @@
   border: 1px solid transparent;
   background-color: transparent;
   border-radius: $border-lg;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
   &--sm {
     min-width: 11rem;
     min-height: 2.8rem;

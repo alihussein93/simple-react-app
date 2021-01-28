@@ -1,3 +1,5 @@
+@import './colors';
+
 $container-max-width: 144rem;
 
 $border-lg: 5rem;
@@ -16,3 +18,35 @@ $sm-space: 1.5rem;
 $md-space: 2rem;
 $lg-space: 3rem;
 $xl-space: 4rem;
+
+$main-bg-gradient-webkit: -webkit-linear-gradient(
+  to right,
+  $black,
+  $gradient-color-01,
+  $gradient-color-01,
+  $gradient-color-02,
+  $gradient-color-03,
+  $gradient-color-04,
+  $gradient-color-05,
+  $gradient-color-06,
+  $gradient-color-07,
+  $gradient-color-08,
+  $gradient-color-09,
+  $gradient-color-10,
+  $gradient-color-11
+);
+$main-bg-gradient: linear-gradient(
+  to right,
+  $black,
+  $gradient-color-01,
+  $gradient-color-02,
+  $gradient-color-03,
+  $gradient-color-04,
+  $gradient-color-05,
+  $gradient-color-06,
+  $gradient-color-07,
+  $gradient-color-08,
+  $gradient-color-09,
+  $gradient-color-10,
+  $gradient-color-11
+);

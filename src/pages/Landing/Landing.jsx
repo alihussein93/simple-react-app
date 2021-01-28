@@ -9,7 +9,7 @@ const Landing = (props) => {
   return (
     <div id='landing' className='landing'>
       <div className='container flex flex-align-center'>
-        <div className='content flex flex-align-center'>
+        <div className='content flex flex-align-center flex-justify-space-between'>
           <div className='landing__text'>
             <div className='landing__title'>NK Microservices Project</div>
             <div className='landing__description'>
@@ -26,9 +26,14 @@ const Landing = (props) => {
                 wishes to contribute to it, by enhancing it, adding new
                 features, and suggesting recommendations.
               </p>
-            </div>{' '}
+            </div>
             <div className='landing__button-wrapper'>
-              <Button>View on Github</Button>
+              <Button
+                type='link'
+                path='https://github.com/nicolaselkhoury/nk-microservices-deployment'
+              >
+                View on Github
+              </Button>
             </div>
           </div>
           <div className='landing__image-wrapper'>

@@ -1,15 +1,19 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import classNames from 'classnames';
-
+import { Link } from 'react-router-dom';
 import './style.scss';
 
-const Button = ({ size, style, children, onClick }) => (
+const Button = (props) =>
+  props.type === 'button' ? renderButton(props) : renderLink(props);
+
+const renderButton = ({ size, style, children, extraClass, onClick }) => (
   <button
     className={classNames({
       button: true,
       [`button--${size}`]: size.length > 0,
-      [`button--${style}`]: style.length > 0
+      [`button--${style}`]: style.length > 0,
+      [extraClass]: extraClass.length > 0
     })}
     onClick={onClick}
   >
@@ -17,14 +21,37 @@ const Button = ({ size, style, children, onClick }) => (
   </button>
 );
 
+const renderLink = ({ path, size, style, extraClass, children }) => (
+  <Link
+    to={path}
+    className={classNames({
+      button: true,
+      [`button--${size}`]: size.length > 0,
+      [`button--${style}`]: style.length > 0,
+      [extraClass]: extraClass.length > 0
+    })}
+  >
+    {children}
+  </Link>
+);
+
 Button.propTypes = {
   children: propTypes.node.isRequired,
-  size: propTypes.string
+  size: propTypes.string,
+  style: propTypes.string,
+  path: propTypes.string,
+  type: propTypes.string,
+  extraClass: propTypes.string,
+  onClick: propTypes.func
 };
 
 Button.defaultProps = {
   size: 'md',
-  style: 'primary'
+  style: 'primary',
+  type: 'button',
+  path: '',
+  extraClass: '',
+  onClick: () => {}
 };
 
 export default Button;

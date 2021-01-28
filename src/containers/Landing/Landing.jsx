@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
 import LandingUI from 'pages/Landing';
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 class Landing extends Component {
   constructor(props) {
@@ -12,11 +14,11 @@ class Landing extends Component {
   render() {
     return (
       <>
-        {/* <header className='header'>header</header> */}
+        <Header />
         <div className='page-body'>
           <LandingUI />
         </div>
-        {/* <footer className='footer'>footer</footer> */}
+        <Footer />
       </>
     );
   }
