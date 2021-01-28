@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import Button from 'components/Button';
 
@@ -11,20 +12,15 @@ const Landing = (props) => {
       <div className='container flex flex-align-center'>
         <div className='content flex flex-align-center flex-justify-space-between'>
           <div className='landing__text'>
-            <div className='landing__title'>NK Microservices Project</div>
+            <div className='landing__title'>
+              <FormattedMessage id='landing.title' />
+            </div>
             <div className='landing__description'>
               <p className='landing__paragraph'>
-                The NK Microservices project serves as a pilot project and/or a
-                reference to be used by anyone who wishes to write software
-                using the Microservices approach. Indeed, Microservices is a
-                software development methodology that is being adopted widely
-                nowadays, especially with the advancement of the technology, and
-                the adoption of cloud computing resources.
+                <FormattedMessage id='landing.text.p1' />
               </p>
               <p className='landing__paragraph'>
-                This project is basic, open source, and welcomes everyone who
-                wishes to contribute to it, by enhancing it, adding new
-                features, and suggesting recommendations.
+                <FormattedMessage id='landing.text.p2' />
               </p>
             </div>
             <div className='landing__button-wrapper'>
@@ -32,7 +28,7 @@ const Landing = (props) => {
                 type='link'
                 path='https://github.com/nicolaselkhoury/nk-microservices-deployment'
               >
-                View on Github
+                <FormattedMessage id='landing.view_github' />
               </Button>
             </div>
           </div>

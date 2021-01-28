@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import Button from 'components/Button';
 
@@ -15,10 +16,10 @@ const Header = (props) => (
           path='/login'
           style='primary-outline'
         >
-          Login
+          <FormattedMessage id='app.login' />
         </Button>
         <Button extraClass='header__link' type='link' path='/signup'>
-          Signup
+          <FormattedMessage id='app.signup' />
         </Button>
       </div>
     </div>
