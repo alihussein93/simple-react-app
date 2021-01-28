@@ -12,11 +12,11 @@ class Landing extends Component {
   render() {
     return (
       <>
-        <header className='header'>header</header>
+        {/* <header className='header'>header</header> */}
         <div className='page-body'>
           <LandingUI />
         </div>
-        <footer className='footer'>footer</footer>
+        {/* <footer className='footer'>footer</footer> */}
       </>
     );
   }

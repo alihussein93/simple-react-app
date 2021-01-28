@@ -1,0 +1,44 @@
+@import '../../styles/theme';
+
+.button {
+  outline: none;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: $border-lg;
+  &--sm {
+    min-width: 11rem;
+    min-height: 2.8rem;
+    font-size: 1.4rem;
+  }
+  &--md {
+    padding: $sm-space $lg-space;
+    min-width: 13rem;
+    min-height: 3.7rem;
+    font-size: 1.6rem;
+  }
+  &--lg {
+    padding: $md-space $xl-space;
+    min-width: 15rem;
+    min-height: 4.6rem;
+    font-size: 1.8rem;
+  }
+
+  &--primary {
+    background-color: $off-white;
+    color: $primary-color;
+    &-outline {
+      background-color: transparent;
+      border-color: $off-white;
+      color: $off-white;
+    }
+  }
+  &--inverted {
+    background-color: $primary-color;
+    color: $white;
+    &-outline {
+      background-color: transparent;
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+}

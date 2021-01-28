@@ -1,15 +1,71 @@
-#landing {
+@import '../../styles/theme';
+
+.landing {
   width: 100%;
   flex: 1;
-  background: #000000; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
-    #434343,
-    #000000
-  ); /* Chrome 10-25, Safari 5.1-6 */
+    $black,
+    $gradient-color-01,
+    $gradient-color-01,
+    $gradient-color-02,
+    $gradient-color-03,
+    $gradient-color-04,
+    $gradient-color-05,
+    $gradient-color-06,
+    $gradient-color-07,
+    $gradient-color-08,
+    $gradient-color-09,
+    $gradient-color-10,
+    $gradient-color-11
+  );
   background: linear-gradient(
     to right,
-    #434343,
-    #000000
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    $black,
+    $gradient-color-01,
+    $gradient-color-02,
+    $gradient-color-03,
+    $gradient-color-04,
+    $gradient-color-05,
+    $gradient-color-06,
+    $gradient-color-07,
+    $gradient-color-08,
+    $gradient-color-09,
+    $gradient-color-10,
+    $gradient-color-11
+  );
+
+  &__text {
+    width: 60%;
+  }
+  &__title {
+    font-size: 4.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: $lg-space;
+  }
+  &__description {
+    font-size: 2rem;
+    color: #fff;
+    line-height: 1.3;
+    max-width: 70rem;
+  }
+  &__paragraph {
+    &:not(:last-child) {
+      margin-bottom: $md-space;
+    }
+  }
+  &__image-wrapper {
+    width: 35%;
+    height: 50.5rem;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    background-image: url(../../assets/icons/cube.svg);
+    background-size: cover;
+  }
+  &__button-wrapper {
+    margin-top: $lg-space;
+  }
 }
