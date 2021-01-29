@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router';
 
 import Landing from 'containers/Landing';
+import Signup from 'containers/Signup';
+import Login from 'containers/Login';
 
 const authorizedRoutes = () => (
   <Switch>
@@ -14,6 +16,8 @@ const authorizedRoutes = () => (
 const unAuthorizedRoutes = () => (
   <Switch>
     <Route exact path='/' component={Landing} />
+    <Route exact path='/signup' component={Signup} />
+    <Route exact path='/login' component={Login} />
     <Redirect from='*' to='/' />
   </Switch>
 );

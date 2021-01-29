@@ -7,7 +7,14 @@ import './style.scss';
 const Button = (props) =>
   props.type === 'button' ? renderButton(props) : renderLink(props);
 
-const renderButton = ({ size, style, children, extraClass, onClick }) => (
+const renderButton = ({
+  size,
+  style,
+  children,
+  extraClass,
+  isDisabled,
+  onClick
+}) => (
   <button
     className={classNames({
       button: true,
@@ -16,6 +23,7 @@ const renderButton = ({ size, style, children, extraClass, onClick }) => (
       [extraClass]: extraClass.length > 0
     })}
     onClick={onClick}
+    disabled={isDisabled}
   >
     {children}
   </button>
@@ -42,7 +50,8 @@ Button.propTypes = {
   path: propTypes.string,
   type: propTypes.string,
   extraClass: propTypes.string,
-  onClick: propTypes.func
+  onClick: propTypes.func,
+  isDisabled: propTypes.bool
 };
 
 Button.defaultProps = {
@@ -51,6 +60,7 @@ Button.defaultProps = {
   type: 'button',
   path: '',
   extraClass: '',
+  isDisabled: false,
   onClick: () => {}
 };
 

@@ -39,4 +39,21 @@
   &-justify-space-between {
     justify-content: space-between;
   }
+  &-justify-center {
+    justify-content: center;
+  }
+  &-column {
+    flex-direction: column;
+    flex-flow: column;
+  }
+}
+
+.row {
+  width: 100%;
+  &:not(:last-child) {
+    margin-bottom: $md-space;
+  }
+  &--ex-mg {
+    margin-bottom: $xl-space !important;
+  }
 }

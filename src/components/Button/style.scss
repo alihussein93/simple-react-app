@@ -8,6 +8,11 @@
   text-align: center;
   display: inline-block;
   cursor: pointer;
+  font-weight: 500;
+  &:disabled {
+    background-color: #5c5c5c;
+    cursor: not-allowed;
+  }
   &--sm {
     min-width: 11rem;
     min-height: 2.8rem;

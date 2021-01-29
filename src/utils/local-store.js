@@ -6,6 +6,10 @@ class LocalStore {
   setLocale(locale) {
     localStorage.setItem('locale', locale);
   }
+
+  getAccessToken() {
+    return sessionStorage.getItem('accessToken');
+  }
 }
 
 export default new LocalStore();
