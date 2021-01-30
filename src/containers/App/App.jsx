@@ -25,7 +25,7 @@ class App extends Component {
     const { dispatch, locale } = this.props;
     const appLocale = LocalStore.getLocale() || locale;
     dispatch({
-      type: Events.initApp,
+      type: Events.INIT_APP,
       locale: appLocale
     });
   };

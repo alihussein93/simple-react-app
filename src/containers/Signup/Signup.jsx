@@ -63,7 +63,6 @@ class Signup extends Component {
         });
         break;
     }
-
     this.setState((prevState) => ({
       ...prevState,
       errors: {
@@ -113,7 +112,6 @@ class Signup extends Component {
         }
       });
     });
-
     this.setState((prevState) => ({
       ...prevState,
       errors: {

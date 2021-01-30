@@ -1,4 +1,5 @@
 const locales = {
+  'app.home': 'Home',
   'app.login': 'Login',
   'app.signup': 'Sign up',
   'app.first_name': 'First name',
@@ -7,6 +8,9 @@ const locales = {
   'app.email': 'Email',
   'app.password': 'Password',
   'app.dob': 'Date of birth',
+  'app.placeholder.email': 'e.g. john.doe@example.com',
+  'app.placeholder.password': 'your password',
+
   'app.error.required': 'Required field.',
   'app.error.singleAt': 'Email should contain single @.',
   'app.error.invalidDomain': 'Invalid domain.',

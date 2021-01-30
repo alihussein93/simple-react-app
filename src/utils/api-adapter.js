@@ -26,12 +26,12 @@ class Index {
     );
   }
 
-  async login({ email, password, isRemember }) {
-    const { data } = await axios.post('/auth/login', {
+  async login({ email, password }) {
+    const res = await axios.post('backend/login', {
       email,
-      password,
-      isRemember
+      password
     });
+    return res;
   }
 
   async signup({ firstName, lastName, email, password, dob, age, isAdmin }) {

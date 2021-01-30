@@ -1,0 +1,43 @@
+@import '../../styles/theme';
+
+.login {
+  width: 100%;
+  flex: 1;
+  background: $main-bg-gradient-webkit;
+  background: $main-bg-gradient;
+  &__form-wrapper {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+  }
+  &__title {
+    font-size: 3.2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .form {
+    width: 100%;
+    background-color: $off-white;
+    padding: $lg-space $xl-space;
+    border-radius: $border-sm;
+    margin-top: 15rem;
+    &__field {
+      width: 100%;
+      &--name {
+        width: 50%;
+        &:not(:last-child) {
+          margin-right: $sm-space;
+        }
+      }
+      &--login {
+        button {
+          width: 60%;
+          margin: 0 auto;
+        }
+      }
+    }
+    &__submit-button {
+      margin: 0 auto;
+    }
+  }
+}

@@ -9,7 +9,7 @@ const initialState = {
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case Events.initApp:
+    case Events.INIT_APP:
       return {
         ...state,
         locale: action.locale

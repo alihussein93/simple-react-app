@@ -78,7 +78,7 @@ const Signup = ({
                 id='email'
                 name='email'
                 placeholder={formatMessage({
-                  id: 'signup.placeholder.email'
+                  id: 'app.placeholder.email'
                 })}
                 value={email}
                 label={formatMessage({ id: 'app.email' })}
@@ -101,7 +101,7 @@ const Signup = ({
                 name='password'
                 type='password'
                 placeholder={formatMessage({
-                  id: 'signup.placeholder.password'
+                  id: 'app.placeholder.password'
                 })}
                 value={password}
                 label={formatMessage({ id: 'app.password' })}
@@ -151,9 +151,22 @@ const Signup = ({
 );
 
 Signup.propTypes = {
-  data: propTypes.shape({}).isRequired,
+  data: propTypes.shape({
+    firstName: propTypes.string.isRequired,
+    lastName: propTypes.string.isRequired,
+    email: propTypes.string.isRequired,
+    password: propTypes.string.isRequired,
+    dob: propTypes.string.isRequired,
+    isSubmitDisabled: propTypes.bool.isRequired
+  }).isRequired,
   events: propTypes.shape({}).isRequired,
-  errors: propTypes.shape({}).isRequired
+  errors: propTypes.shape({
+    firstName: propTypes.string.isRequired,
+    lastName: propTypes.string.isRequired,
+    email: propTypes.string.isRequired,
+    password: propTypes.string.isRequired,
+    dob: propTypes.string.isRequired
+  }).isRequired
 };
 
 export default injectIntl(Signup);
