@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.6.2",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
+    "cleave.js": "^1.6.0",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
@@ -23,7 +24,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_ENV='development' react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

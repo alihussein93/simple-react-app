@@ -7,9 +7,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 import store from './store';
 import history from './history';
+import APIAdapter from 'utils/api-adapter';
 
 import './styles/_main.scss';
 
+APIAdapter.init();
 const ROOT_NODE = document.getElementById('root');
 const APP_NODE = (
   <Provider store={store}>

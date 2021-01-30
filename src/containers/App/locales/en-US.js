@@ -25,7 +25,8 @@ const locales = {
   'app.error.password.lowerCase':
     'Password must contain at least one lower case letter.',
   'app.error.password.numeric':
-    'Password must contain at least one numeric value.'
+    'Password must contain at least one numeric value.',
+  'app.error.date.invalid': 'Invalid date.'
 };
 
 export default locales;

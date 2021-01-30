@@ -1,20 +1,17 @@
 import axios from 'axios';
 
-import Environment from 'constants/environment';
-import Enums from 'constants/enums';
+import Environment from 'constants/env';
 import LocalStore from './local-store';
 
 class Index {
   init() {
     const accessToken = LocalStore.getAccessToken();
-    const locale = LocalStore.getLocale();
 
     const headerConfig = {
       'Content-Type': 'application/json',
-      Authorization: accessToken ? `Bearer ${accessToken}` : '',
-      'X-Locale': locale === Enums.locales.ar_AE ? 'ar_AE' : 'en_US'
+      Authorization: accessToken ? `Bearer ${accessToken}` : ''
     };
-    axios.defaults.baseURL = Environment.endPoint;
+    axios.defaults.baseURL = `${Environment.baseURL}:${Environment.portNumber}`;
     axios.defaults.headers.common = { ...headerConfig };
 
     axios.interceptors.request.use(
@@ -38,7 +35,7 @@ class Index {
   }
 
   async signup({ firstName, lastName, email, password, dob, age, isAdmin }) {
-    const { status } = await axios.post('/auth/signup', {
+    const res = await axios.post('/backend/person', {
       firstName,
       lastName,
       email,
@@ -47,7 +44,7 @@ class Index {
       age,
       isAdmin
     });
-    return status;
+    return res;
   }
 }
 

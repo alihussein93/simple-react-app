@@ -69,8 +69,7 @@ class Index {
   }
 
   isDateInvalid(date) {
-    const regEx = '\\d{2}-\\d{2}-d{4}';
-    return !date.matches(regEx);
+    return date.includes('0000') || date.length < 10;
   }
 
   get emptyMessage() {
