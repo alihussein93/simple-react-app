@@ -23,7 +23,13 @@ const Input = ({
       [extraClass]: extraClass.length > 0
     })}
   >
-    <label htmlFor={id} className='input__label'>
+    <label
+      htmlFor={id}
+      className={classNames({
+        input__label: true,
+        'input__label--error': error.length > 0
+      })}
+    >
       {label}
     </label>
     <input

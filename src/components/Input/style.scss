@@ -8,6 +8,9 @@
     margin-bottom: $xs-space;
     font-size: 1.6rem;
     color: $primary-color;
+    &--error {
+      color: $error-color;
+    }
   }
   &__field {
     width: 100%;
