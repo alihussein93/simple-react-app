@@ -1,6 +1,7 @@
 const locales = {
   'app.home': 'Home',
   'app.login': 'Login',
+  'app.logout': 'Logout',
   'app.signup': 'Sign up',
   'app.first_name': 'First name',
   'app.last_name': 'Last name',

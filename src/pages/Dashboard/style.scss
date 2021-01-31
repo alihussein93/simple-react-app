@@ -1,0 +1,25 @@
+@import '../../styles/theme';
+
+.dashboard {
+  padding-top: 20rem;
+  &__actions {
+  }
+
+  &__action {
+    padding: $md-space $xl-space;
+    width: 100%;
+    max-width: 30rem;
+    height: 10rem;
+    border-radius: $border-sm;
+    background-color: $off-white;
+    font-size: 3.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:not(:last-child) {
+      margin-bottom: $lg-space;
+    }
+  }
+}

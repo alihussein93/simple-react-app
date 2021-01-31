@@ -1,10 +1,6 @@
 @import '../../styles/theme';
 
 .signup {
-  width: 100%;
-  flex: 1;
-  background: $main-bg-gradient-webkit;
-  background: $main-bg-gradient;
   &__form-wrapper {
     width: 100%;
     max-width: 60rem;

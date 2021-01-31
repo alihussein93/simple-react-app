@@ -16,7 +16,7 @@ const Signup = ({
   errors,
   intl: { formatMessage }
 }) => (
-  <div className='signup'>
+  <div className='signup main-bg'>
     <div className='container'>
       <div className='signup__form-wrapper'>
         <form

@@ -15,7 +15,7 @@ const Login = ({
   errors,
   intl: { formatMessage }
 }) => (
-  <div className='login'>
+  <div className='login main-bg'>
     <div className='container'>
       <div className='login__form-wrapper'>
         <form

@@ -1,4 +1,4 @@
-@import './variables';
+@import './theme';
 
 .container-fluid {
   width: 100%;
@@ -56,4 +56,11 @@
   &--ex-mg {
     margin-bottom: $xl-space !important;
   }
+}
+
+.main-bg {
+  width: 100%;
+  flex: 1;
+  background: $main-bg-gradient-webkit;
+  background: $main-bg-gradient;
 }
