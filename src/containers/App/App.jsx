@@ -12,7 +12,6 @@ import Enums from 'constants/enums';
 import LocalStore from 'utils/local-store';
 import APIAdapter from 'utils/api-adapter';
 import Actions from './actions';
-import Events from './events';
 
 const AppActions = new Actions();
 
@@ -69,27 +68,14 @@ class App extends Component {
       // const userInfo = await APIAdapter.userInfo();
 
       // TEMP ==================================================
-      const data = {
-        user: {
-          id: '39888',
-          firstName: 'ali',
-          lastName: 'hussein',
-          age: 28,
-          dob: '1993-01-13',
-          email: 'alii@gmail.com',
-          isAdmin: false,
-          isActive: true
-        },
-        tokens: {
-          accessToken:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDRaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTA1NTE3fQ.B4tFOJ76wFsyWb05ovk0BgHjROcFyPEM094-AOWFpDE',
-          refreshToken:
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDZaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTg4MzE3fQ.DdyirfB17sqhBDc611NNf3gIDpI0KWZo3iYXXq7Gnk8'
-        }
+      const tokens = {
+        accessToken:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDRaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTA1NTE3fQ.B4tFOJ76wFsyWb05ovk0BgHjROcFyPEM094-AOWFpDE',
+        refreshToken:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDZaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTg4MzE3fQ.DdyirfB17sqhBDc611NNf3gIDpI0KWZo3iYXXq7Gnk8'
       };
       // END TEMP ==================================================
-
-      authenticateUser({ ...data.tokens, userInfo: data.user });
+      authenticateUser(tokens);
       this.setState((prevState) => ({
         ...prevState,
         isLoading: false

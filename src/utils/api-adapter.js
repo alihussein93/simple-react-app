@@ -9,7 +9,7 @@ class Index {
 
     const headerConfig = {
       'Content-Type': 'application/json',
-      Authorization: accessToken ? `Bearer ${accessToken}` : ''
+      Authorization: accessToken ? accessToken : ''
     };
     axios.defaults.baseURL = `${Environment.baseURL}:${Environment.portNumber}`;
     axios.defaults.headers.common = { ...headerConfig };
@@ -47,8 +47,18 @@ class Index {
     return res;
   }
 
-  async userInfo() {
+  async getProfile() {
     const res = await axios.get('backend/person');
+    return res;
+  }
+
+  async getAllPersons() {
+    const res = await axios.get('backend/persons');
+    return res;
+  }
+
+  async deletePerson(id) {
+    const res = await axios.delete(`backend/person/${id}`);
     return res;
   }
 }

@@ -5,17 +5,17 @@ import { FormattedMessage } from 'react-intl';
 import './style.scss';
 
 const Dashboard = ({
-  events: { onMyDetailsClick, onAllPersonsClick, onDeletePersonClick }
+  events: { onProfileInfoClick, onAllPersonsClick, onDeletePersonClick }
 }) => (
   <div className='dashboard main-bg'>
     <div className='container'>
       <div className='dashboard__actions flex flex-column flex-align-center flex-justify-center'>
         <div
           className='dashboard__action dashboard__action--my-details flex  flex-align-center flex-justify-center'
-          onClick={onMyDetailsClick}
+          onClick={onProfileInfoClick}
           role='presentation'
         >
-          <FormattedMessage id='dashboard.action.myDetails' />
+          <FormattedMessage id='dashboard.action.myProfile' />
         </div>
         <div
           className='dashboard__action dashboard__action--my-details flex  flex-align-center flex-justify-center'

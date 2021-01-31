@@ -1,5 +1,5 @@
 const locales = {
-  'dashboard.action.myDetails': 'My details',
+  'dashboard.action.myProfile': 'My profile',
   'dashboard.action.allPersons': 'All persons',
   'dashboard.action.deletePerson': 'Delete person'
 };

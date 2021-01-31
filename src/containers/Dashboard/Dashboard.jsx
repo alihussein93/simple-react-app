@@ -3,20 +3,99 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import DashboardUI from 'pages/Dashboard';
+
+import APIAdapter from 'utils/api-adapter';
+import Actions from './actions';
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLoading: true
+    };
   }
 
-  onMyDetailsClick = () => {};
+  onProfileInfoClick = () => {
+    this.getProfileInfo();
+  };
 
-  onAllPersonsClick = () => {};
+  onAllPersonsClick = () => {
+    this.getAllPersonsClick();
+  };
 
-  onDeletePersonClick = () => {};
+  onDeletePersonClick = () => {
+    this.deletePerson();
+  };
+
+  async getProfileInfo() {
+    try {
+      const { getUserProfile } = this.props;
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: true
+      }));
+      const { status, data } = await APIAdapter.getProfile();
+      getUserProfile(data[0]);
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: false
+      }));
+    } catch (error) {
+      console.log(error);
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: false
+      }));
+    }
+  }
+
+  async getAllPersonsClick() {
+    try {
+      const { getAllPersons } = this.props;
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: true
+      }));
+      const { status, data } = await APIAdapter.getAllPersons();
+      getAllPersons(data);
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: false
+      }));
+    } catch (error) {
+      console.log(error);
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: false
+      }));
+    }
+  }
+
+  async deletePerson() {
+    try {
+      const { deletePerson, personId } = this.props;
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: true
+      }));
+      const { status, data } = await APIAdapter.deletePerson(personId);
+      deletePerson();
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: false
+      }));
+    } catch (error) {
+      console.log(error);
+      this.setState((prevState) => ({
+        ...prevState,
+        isLoading: false
+      }));
+    }
+  }
 
   render() {
     const events = {
-      onMyDetailsClick: this.onMyDetailsClick,
+      onProfileInfoClick: this.onProfileInfoClick,
       onAllPersonsClick: this.onAllPersonsClick,
       onDeletePersonClick: this.onDeletePersonClick
     };
@@ -28,6 +107,22 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {};
+const mapStateToProps = (state) => ({
+  personId: state.info.profile.id
+});
 
-export default Dashboard;
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+  getUserProfile: (profile) => Actions.getProfile(profile),
+  getAllPersons: () => Actions.getAllPersons(),
+  deletePerson: () => Actions.deletePerson()
+});
+
+Dashboard.propTypes = {
+  personId: propTypes.string.isRequired,
+  getUserProfile: propTypes.func.isRequired,
+  getAllPersons: propTypes.func.isRequired,
+  deletePerson: propTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

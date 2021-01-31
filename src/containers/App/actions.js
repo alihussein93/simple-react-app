@@ -1,17 +1,16 @@
-import Events from './events';
+import actionTypes from './action-types';
 
 class AppActions {
   initApp(locale) {
     return {
-      type: Events.INIT_APP,
+      type: actionTypes.INIT_APP,
       locale
     };
   }
 
-  authenticateUser({ userInfo, accessToken, refreshToken }) {
+  authenticateUser({ accessToken, refreshToken }) {
     return {
-      type: Events.AUTHENTICATE_USER,
-      userInfo,
+      type: actionTypes.AUTHENTICATE_USER,
       accessToken,
       refreshToken
     };
@@ -19,7 +18,7 @@ class AppActions {
 
   unAuthenticateUser() {
     return {
-      type: Events.UNAUTHENTICATE_USER
+      type: actionTypes.UNAUTHENTICATE_USER
     };
   }
 }

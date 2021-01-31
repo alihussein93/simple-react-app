@@ -1,5 +1,5 @@
 import Enums from 'constants/enums';
-import Events from './events';
+import Events from './action-types';
 
 const initialState = {
   authStatus: Enums.authStatuses.NONE,
@@ -22,22 +22,12 @@ const appReducer = (state = initialState, action) => {
         ...state,
         authStatus: Enums.authStatuses.AUTHENTICATED,
         accessToken: action.accessToken,
-        refreshToken: action.refreshToken,
-        profile: {
-          ...state.profile,
-          ...action.userInfo
-        }
+        refreshToken: action.refreshToken
       };
     case Events.UAUTHENTICATE_USER:
       return {
         ...state,
-        authStatus: Enums.authStatuses.UNAUTHENTICATED,
-        accessToken: action.accessToken,
-        refreshToken: action.refreshToken,
-        profile: {
-          ...state.profile,
-          ...action.userInfo
-        }
+        authStatus: Enums.authStatuses.UNAUTHENTICATED
       };
     default:
       return state;
