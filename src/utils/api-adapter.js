@@ -46,6 +46,11 @@ class Index {
     });
     return res;
   }
+
+  async userInfo() {
+    const res = await axios.get('backend/person');
+    return res;
+  }
 }
 
 export default new Index();

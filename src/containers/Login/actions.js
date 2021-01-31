@@ -1,7 +1,5 @@
-import Events from './events';
+import AppActions from 'containers/App/actions';
 
-export const authenticateUser = ({ _id: id, accessToken, refreshToken }) => ({
-  type: Events.AUTHENTICATE_USER,
-  accessToken,
-  refreshToken
-});
+class Actions extends AppActions {}
+
+export default new Actions();

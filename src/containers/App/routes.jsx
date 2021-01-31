@@ -16,7 +16,7 @@ const authorizedRoutes = () => (
 
 const unAuthorizedRoutes = () => (
   <Switch>
-    <Route exact path='/' component={Dashboard} />
+    <Route exact path='/' component={Landing} />
     <Route exact path='/signup' component={Signup} />
     <Route exact path='/login' component={Login} />
     <Redirect from='*' to='/' />
