@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import DashboardUI from 'pages/Dashboard';
+import Modal from 'components/Modal';
 
 import APIAdapter from 'utils/api-adapter';
 import Actions from './actions';
@@ -11,7 +12,20 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isLoading: false,
+      isModalVisible: false,
+      modalType: '',
+      data: {
+        id: '39888',
+        firstName: 'ali',
+        lastName: 'hussein',
+        age: 28,
+        dob: '1993-01-13',
+        email: 'alii@gmail.com',
+        isAdmin: false,
+        createdAt: 1612101896045,
+        isActive: true
+      }
     };
   }
 
@@ -27,6 +41,13 @@ class Dashboard extends Component {
     this.deletePerson();
   };
 
+  onModalClose = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      isModalVisible: false
+    }));
+  };
+
   async getProfileInfo() {
     try {
       const { getUserProfile } = this.props;
@@ -34,10 +55,12 @@ class Dashboard extends Component {
         ...prevState,
         isLoading: true
       }));
-      const { status, data } = await APIAdapter.getProfile();
-      getUserProfile(data[0]);
+      // const { status, data } = await APIAdapter.getProfile();
+      // getUserProfile(data[0]);
       this.setState((prevState) => ({
         ...prevState,
+        modalType: 'profile',
+        isModalVisible: true,
         isLoading: false
       }));
     } catch (error) {
@@ -73,12 +96,15 @@ class Dashboard extends Component {
 
   async deletePerson() {
     try {
-      const { deletePerson, personId } = this.props;
+      const {
+        deletePerson,
+        profile: { id }
+      } = this.props;
       this.setState((prevState) => ({
         ...prevState,
         isLoading: true
       }));
-      const { status, data } = await APIAdapter.deletePerson(personId);
+      const { status, data } = await APIAdapter.deletePerson(id);
       deletePerson();
       this.setState((prevState) => ({
         ...prevState,
@@ -94,6 +120,7 @@ class Dashboard extends Component {
   }
 
   render() {
+    const { isModalVisible, data, modalType } = this.state;
     const events = {
       onProfileInfoClick: this.onProfileInfoClick,
       onAllPersonsClick: this.onAllPersonsClick,
@@ -101,6 +128,9 @@ class Dashboard extends Component {
     };
     return (
       <>
+        {isModalVisible && (
+          <Modal onClose={this.onModalClose} type={modalType} data={data} />
+        )}
         <DashboardUI events={events} />
       </>
     );
@@ -108,7 +138,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  personId: state.info.profile.id
+  profile: state.info.profile
 });
 
 const mapDispatchToProps = (dispatch) => ({
