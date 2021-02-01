@@ -65,17 +65,9 @@ class App extends Component {
         ...prevState,
         isLoading: true
       }));
-      // const userInfo = await APIAdapter.userInfo();
-
-      // TEMP ==================================================
-      const tokens = {
-        accessToken:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDRaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTA1NTE3fQ.B4tFOJ76wFsyWb05ovk0BgHjROcFyPEM094-AOWFpDE',
-        refreshToken:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDZaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTg4MzE3fQ.DdyirfB17sqhBDc611NNf3gIDpI0KWZo3iYXXq7Gnk8'
-      };
-      // END TEMP ==================================================
-      authenticateUser(tokens);
+      // todo: add user data to store
+      const userInfo = await APIAdapter.getProfile();
+      authenticateUser({ accessToken, refreshToken });
       this.setState((prevState) => ({
         ...prevState,
         isLoading: false

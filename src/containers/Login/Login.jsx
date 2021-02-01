@@ -91,9 +91,9 @@ class Login extends Component {
   };
 
   onSubmit = (event) => {
-    // if (this.validateForm()) {
-    //   return;
-    // }
+    if (this.validateForm()) {
+      return;
+    }
     this.login();
     event.preventDefault();
   };
@@ -106,18 +106,13 @@ class Login extends Component {
         ...prevState,
         isLoading: true
       }));
-      // const { status, data, tokens } = await APIAdapter.login({
-      //   email,
-      //   password
-      // });
-      // TEMP ==================================================
-      const tokens = {
-        accessToken:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDRaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTA1NTE3fQ.B4tFOJ76wFsyWb05ovk0BgHjROcFyPEM094-AOWFpDE',
-        refreshToken:
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImVtYWlsIjoiYWxpaUBnbWFpbC5jb20iLCJpc0FjdGl2ZSI6dHJ1ZSwiaXNBZG1pbiI6ZmFsc2UsInBlcnNvbklkIjoiMzk4ODgiLCJkYXRlIjoiMjAyMS0wMS0zMVQxNDowNToxNy42MDZaIn0sImlhdCI6MTYxMjEwMTkxNywiZXhwIjoxNjEyMTg4MzE3fQ.DdyirfB17sqhBDc611NNf3gIDpI0KWZo3iYXXq7Gnk8'
-      };
-      // END TEMP ==================================================
+      const {
+        data: { tokens }
+      } = await APIAdapter.login({
+        email,
+        password
+      });
+
       LocalStore.setTokens(tokens);
       APIAdapter.init();
       authenticateUser({

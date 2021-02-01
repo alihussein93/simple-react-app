@@ -151,7 +151,6 @@ class Signup extends Component {
         ...prevState,
         isLoading: false
       }));
-      console.log(res);
     } catch (error) {
       console.log(error);
     }

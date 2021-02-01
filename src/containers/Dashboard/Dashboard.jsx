@@ -55,8 +55,8 @@ class Dashboard extends Component {
         ...prevState,
         isLoading: true
       }));
-      // const { status, data } = await APIAdapter.getProfile();
-      // getUserProfile(data[0]);
+      const { status, data } = await APIAdapter.getProfile();
+      getUserProfile(data[0]);
       this.setState((prevState) => ({
         ...prevState,
         modalType: 'profile',
