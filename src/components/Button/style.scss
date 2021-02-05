@@ -19,19 +19,19 @@
   &--sm {
     min-width: 11rem;
     min-height: 2.8rem;
-    font-size: 1.4rem;
+    font-size: $xs-font;
   }
   &--md {
     padding: $sm-space $lg-space;
     min-width: 13rem;
     min-height: 3.7rem;
-    font-size: 1.6rem;
+    font-size: $sm-font;
   }
   &--lg {
     padding: $md-space $xl-space;
     min-width: 15rem;
     min-height: 4.6rem;
-    font-size: 1.8rem;
+    font-size: $md-font;
   }
   &--primary {
     background-color: $off-white;

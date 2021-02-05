@@ -27,6 +27,7 @@ const Landing = (props) => {
               <Button
                 type='link'
                 path='https://github.com/nicolaselkhoury/nk-microservices-deployment'
+                extraClass='landing__button'
               >
                 <FormattedMessage id='landing.view_github' />
               </Button>

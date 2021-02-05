@@ -12,7 +12,7 @@
     height: 10rem;
     border-radius: $border-sm;
     background-color: $off-white;
-    font-size: 3.2rem;
+    font-size: $xl-font;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     &:hover {

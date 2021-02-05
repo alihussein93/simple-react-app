@@ -8,7 +8,6 @@
   left: 0;
   z-index: 999;
   background-color: rgba($overlay-color, 0.6);
-
   &__box {
     background-color: $off-white;
     border-radius: $border-md;
@@ -16,15 +15,12 @@
     max-width: 60rem;
     padding: $md-space $xl-space;
   }
-
   &__header {
     margin-bottom: $md-space;
   }
-
   &__body {
     margin-bottom: $md-space;
   }
-
   &__icon {
     background-size: cover;
     &--close {
@@ -35,16 +31,14 @@
       cursor: pointer;
     }
   }
-
   &__title {
-    font-size: 2.4rem;
+    font-size: $lg-font;
     font-weight: 500;
     text-align: center;
     margin-bottom: $md-space;
   }
-
   &__cell {
-    font-size: 1.6rem;
+    font-size: $sm-font;
     &--name {
       font-weight: 500;
     }
