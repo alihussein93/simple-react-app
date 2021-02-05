@@ -1,12 +1,15 @@
 @import '../../styles/theme';
 
 .button {
+  min-height: 5.5rem;
   outline: none;
   border: 1px solid transparent;
   background-color: transparent;
   border-radius: $border-lg;
   text-align: center;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   font-weight: 500;
   &:disabled {
@@ -30,7 +33,6 @@
     min-height: 4.6rem;
     font-size: 1.8rem;
   }
-
   &--primary {
     background-color: $off-white;
     color: $primary-color;
@@ -48,5 +50,12 @@
       border-color: $primary-color;
       color: $primary-color;
     }
+  }
+  &__loader {
+    margin-right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-size: cover;
+    background-image: url(../../assets/icons/loader.gif);
   }
 }

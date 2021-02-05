@@ -11,7 +11,7 @@ import Enums from 'constants/enums';
 import './style.scss';
 
 const Signup = ({
-  data: { firstName, lastName, email, password, dob, isSubmitDisabled },
+  data: { firstName, lastName, email, password, dob, isLoading },
   events: { onInputChange, onInputBlur, onSubmit },
   errors,
   intl: { formatMessage }
@@ -135,17 +135,16 @@ const Signup = ({
           </div>
           <div className='row  flex'>
             <div className='form__field form__field--signup flex flex-justify-center'>
-              <Button
-                style='inverted'
-                onClick={onSubmit}
-                isDisabled={isSubmitDisabled}
-              >
+              <Button style='inverted' onClick={onSubmit} isLoading={isLoading}>
                 <FormattedMessage id='app.signup' />
               </Button>
             </div>
           </div>
+          <div className='row'>
+            <div className='form__error'>{errors.server}</div>
+          </div>
         </form>
-      </div>{' '}
+      </div>
     </div>
   </div>
 );
@@ -156,8 +155,7 @@ Signup.propTypes = {
     lastName: propTypes.string.isRequired,
     email: propTypes.string.isRequired,
     password: propTypes.string.isRequired,
-    dob: propTypes.string.isRequired,
-    isSubmitDisabled: propTypes.bool.isRequired
+    dob: propTypes.string.isRequired
   }).isRequired,
   events: propTypes.shape({}).isRequired,
   errors: propTypes.shape({

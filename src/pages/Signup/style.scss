@@ -35,5 +35,10 @@
     &__submit-button {
       margin: 0 auto;
     }
+    &__error {
+      font-size: 1.4rem;
+      color: $error-color;
+      text-align: center;
+    }
   }
 }

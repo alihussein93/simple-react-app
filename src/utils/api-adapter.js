@@ -24,6 +24,17 @@ class Index {
         return Promise.reject(new Error(errorStatus));
       }
     );
+
+    axios.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        let errorMessage = '';
+        if (error.response) {
+          errorMessage = error.response.data.data;
+        }
+        return Promise.reject(new Error(errorMessage));
+      }
+    );
   }
 
   async login({ email, password }) {

@@ -86,8 +86,11 @@ const Login = ({
               </Button>
             </div>
           </div>
+          <div className='row'>
+            <div className='form__error'>{errors.server}</div>
+          </div>
         </form>
-      </div>{' '}
+      </div>
     </div>
   </div>
 );

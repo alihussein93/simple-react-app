@@ -13,7 +13,8 @@ const renderButton = ({
   children,
   extraClass,
   isDisabled,
-  onClick
+  onClick,
+  isLoading
 }) => (
   <button
     className={classNames({
@@ -23,8 +24,9 @@ const renderButton = ({
       [extraClass]: extraClass.length > 0
     })}
     onClick={onClick}
-    disabled={isDisabled}
+    disabled={isDisabled || isLoading}
   >
+    {isLoading && <div className='button__loader' />}
     {children}
   </button>
 );
@@ -51,7 +53,8 @@ Button.propTypes = {
   type: propTypes.string,
   extraClass: propTypes.string,
   onClick: propTypes.func,
-  isDisabled: propTypes.bool
+  isDisabled: propTypes.bool,
+  isLoading: propTypes.bool
 };
 
 Button.defaultProps = {
@@ -61,6 +64,7 @@ Button.defaultProps = {
   path: '',
   extraClass: '',
   isDisabled: false,
+  isLoading: false,
   onClick: () => {}
 };
 

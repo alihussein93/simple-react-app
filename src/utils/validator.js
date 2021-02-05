@@ -216,6 +216,15 @@ class Index {
     return error;
   }
 
+  checkLoginPassword(password) {
+    let error = '';
+    if (this.isEmpty(password)) {
+      error = this.emptyMessage;
+      return error;
+    }
+    return error;
+  }
+
   checkDate(date) {
     let error = '';
     if (this.isEmpty(date)) {

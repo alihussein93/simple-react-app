@@ -42,7 +42,7 @@ class Login extends Component {
         error = Validator.checkEmail(value);
         break;
       case 'password':
-        error = Validator.checkPassword(value);
+        error = Validator.checkLoginPassword(value);
         break;
       default:
         break;
@@ -69,7 +69,7 @@ class Login extends Component {
             error = Validator.checkEmail(field[key]);
             break;
           case 'password':
-            error = Validator.checkPassword(field[key]);
+            error = Validator.checkLoginPassword(field[key]);
             break;
           default:
             break;
@@ -123,7 +123,14 @@ class Login extends Component {
         isLoading: false
       }));
     } catch (error) {
-      console.log(error);
+      this.setState((prevState) => ({
+        ...prevState,
+        errors: {
+          ...prevState.errors,
+          server: error.message
+        },
+        isLoading: false
+      }));
     }
   }
 

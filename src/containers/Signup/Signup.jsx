@@ -25,7 +25,8 @@ class Signup extends Component {
         dob: '',
         age: '',
         email: '',
-        password: ''
+        password: '',
+        server: ''
       }
     };
   }
@@ -123,7 +124,6 @@ class Signup extends Component {
   };
 
   onSubmit = (event) => {
-    console.log(this.validateForm());
     if (this.validateForm()) {
       return;
     }
@@ -143,7 +143,7 @@ class Signup extends Component {
         lastName,
         email,
         password,
-        dob,
+        dob: moment(dob, 'DD-MM-YYYY').format('YYYY-MM-DD'),
         age: moment().diff(moment(dob, 'DD-MM-YYYY'), 'years'),
         isAdmin: false
       });
@@ -151,8 +151,16 @@ class Signup extends Component {
         ...prevState,
         isLoading: false
       }));
+      this.props.history.push('/login');
     } catch (error) {
-      console.log(error);
+      this.setState((prevState) => ({
+        ...prevState,
+        errors: {
+          ...prevState.errors,
+          server: error.message
+        },
+        isLoading: false
+      }));
     }
   }
 
@@ -174,7 +182,8 @@ class Signup extends Component {
       dob,
       email,
       password,
-      isSubmitDisabled: isLoading
+      isSubmitDisabled: isLoading,
+      isLoading
     };
     const events = {
       onInputChange: this.onInputChange,
