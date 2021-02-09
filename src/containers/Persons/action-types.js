@@ -2,8 +2,7 @@ import AppActionTypes from 'containers/App/action-types';
 
 const actionTypes = {
   ...AppActionTypes,
-  GET_USER_PROFILE: 'GET_USER_PROFILE',
-  DELETE_PERSON: 'DELETE_PERSON'
+  GET_ALL_PERSONS: 'GET_ALL_PERSONS'
 };
 
 export default actionTypes;

@@ -22,7 +22,7 @@ const Dashboard = ({
           onClick={onAllPersonsClick}
           role='presentation'
         >
-          <FormattedMessage id='dashboard.action.allPersons' />
+          <FormattedMessage id='app.allPersons' />
         </div>
         <div
           className='dashboard__action dashboard__action--my-details flex  flex-align-center flex-justify-center'

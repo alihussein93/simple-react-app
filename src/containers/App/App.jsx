@@ -12,6 +12,7 @@ import Enums from 'constants/enums';
 import LocalStore from 'utils/local-store';
 import APIAdapter from 'utils/api-adapter';
 import Actions from './actions';
+import history from '../../history';
 
 const AppActions = new Actions();
 
@@ -52,7 +53,11 @@ class App extends Component {
 
   load = async () => {
     try {
-      const { unAuthenticateUser, authenticateUser } = this.props;
+      const {
+        unAuthenticateUser,
+        authenticateUser,
+        history: { push }
+      } = this.props;
       const accessToken = LocalStore.getAccessToken();
       const refreshToken = LocalStore.getRefreshToken();
 
@@ -65,7 +70,6 @@ class App extends Component {
         ...prevState,
         isLoading: true
       }));
-
       // todo: add user data to store
       // const userInfo = await APIAdapter.getProfile();
       authenticateUser({ accessToken, refreshToken });
@@ -73,6 +77,7 @@ class App extends Component {
         ...prevState,
         isLoading: false
       }));
+      push(history.location.pathname);
     } catch (error) {
       console.log(error);
     }

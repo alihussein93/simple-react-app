@@ -1,0 +1,57 @@
+@import '../../styles/theme';
+
+.persons {
+  width: 100%;
+  flex: 1;
+  background: $main-bg-gradient-webkit;
+  background: $main-bg-gradient;
+  &__header {
+    margin-top: $xl-space;
+    margin-bottom: $md-space;
+  }
+  &__link {
+    color: $white;
+    cursor: pointer;
+    font-size: $xs-font;
+    margin-right: auto;
+  }
+  &__icon {
+    background-size: cover;
+    background-image: url(../../assets/icons/back.svg);
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: $xs-space;
+  }
+  &__title {
+    font-size: $xl-font;
+    color: $white;
+  }
+  .table {
+    background-color: $white;
+    border-radius: $border-sm;
+    width: 100%;
+    max-height: 80rem;
+    border-collapse: collapse;
+    overflow-x: scroll;
+    &__head {
+      font-size: $md-font;
+      &-cell {
+        padding: $md-space;
+      }
+    }
+    &__body {
+      font-size: $sm-font;
+      &-row {
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: $off-white;
+          transform: scale(1.1) translateY(-1.2rem);
+        }
+      }
+      &-cell {
+        padding: $md-space;
+        text-align: center;
+      }
+    }
+  }
+}

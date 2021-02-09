@@ -16,6 +16,8 @@ const locales = {
   'app.placeholder.email': 'e.g. john.doe@example.com',
   'app.placeholder.password': 'your password',
   'app.done': 'Done',
+  'app.goBack': 'Go back',
+  'app.allPersons': 'All persons',
   'app.error.required': 'Required field.',
   'app.error.singleAt': 'Email should contain single @.',
   'app.error.invalidDomain': 'Invalid domain.',

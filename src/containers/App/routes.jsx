@@ -6,10 +6,12 @@ import Landing from 'containers/Landing';
 import Signup from 'containers/Signup';
 import Login from 'containers/Login';
 import Dashboard from 'containers/Dashboard';
+import Persons from 'containers/Persons';
 
 const authorizedRoutes = () => (
   <Switch>
     <Route exact path='/home' component={Dashboard} />
+    <Route exact path='/persons' component={Persons} />
     <Redirect from='*' to='/home' />
   </Switch>
 );

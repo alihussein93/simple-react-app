@@ -25,16 +25,14 @@ class Dashboard extends Component {
       this.getProfileInfo();
       return;
     }
-    this.setState((prevState) => ({
-      ...prevState,
-      data: profile,
-      modalType: 'profile',
-      isModalVisible: true
-    }));
+    this.saveData(profile, 'profile');
   };
 
   onAllPersonsClick = () => {
-    this.getAllPersonsClick();
+    const {
+      history: { push }
+    } = this.props;
+    push('/persons');
   };
 
   onDeletePersonClick = () => {
@@ -48,6 +46,16 @@ class Dashboard extends Component {
     }));
   };
 
+  saveData = (data, modalType) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      data,
+      modalType,
+      isModalVisible: true,
+      isLoading: false
+    }));
+  };
+
   async getProfileInfo() {
     try {
       const { getUserProfile } = this.props;
@@ -58,35 +66,7 @@ class Dashboard extends Component {
       const { status, data } = await APIAdapter.getProfile();
       const profile = Utils.cleanUserInfo(data[0]);
       getUserProfile(profile);
-      this.setState((prevState) => ({
-        ...prevState,
-        modalType: 'profile',
-        isModalVisible: true,
-        isLoading: false,
-        data: profile
-      }));
-    } catch (error) {
-      console.log(error);
-      this.setState((prevState) => ({
-        ...prevState,
-        isLoading: false
-      }));
-    }
-  }
-
-  async getAllPersonsClick() {
-    try {
-      const { getAllPersons } = this.props;
-      this.setState((prevState) => ({
-        ...prevState,
-        isLoading: true
-      }));
-      const { status, data } = await APIAdapter.getAllPersons();
-      getAllPersons(data);
-      this.setState((prevState) => ({
-        ...prevState,
-        isLoading: false
-      }));
+      this.saveData(profile, 'profile');
     } catch (error) {
       console.log(error);
       this.setState((prevState) => ({
@@ -140,21 +120,20 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  profile: state.info.profile
+  profile: state.person.profile
 });
 
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
   getUserProfile: (profile) => dispatch(Actions.getProfile(profile)),
-  getAllPersons: () => dispatch(Actions.getAllPersons()),
   deletePerson: () => dispatch(Actions.deletePerson())
 });
 
 Dashboard.propTypes = {
   personId: propTypes.string.isRequired,
   getUserProfile: propTypes.func.isRequired,
-  getAllPersons: propTypes.func.isRequired,
-  deletePerson: propTypes.func.isRequired
+  deletePerson: propTypes.func.isRequired,
+  history: propTypes.object.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

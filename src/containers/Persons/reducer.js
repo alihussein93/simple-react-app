@@ -1,23 +1,17 @@
 import actionTypes from './action-types';
 
 const initialState = {
-  profile: {}
+  list: []
 };
 
 const dashboardReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_USER_PROFILE:
+    case actionTypes.GET_ALL_PERSONS:
       return {
         ...state,
-        profile: {
-          ...state.profile,
-          ...action.profile
-        }
+        list: action.persons
       };
-    case actionTypes.DELETE_PERSON:
-      return {
-        ...state
-      };
+
     default:
       return state;
   }
