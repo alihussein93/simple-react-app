@@ -39,7 +39,7 @@ const Signup = ({
                   id: 'signup.placeholder.firstName'
                 })}
                 value={firstName}
-                label={formatMessage({ id: 'app.first_name' })}
+                label={formatMessage({ id: 'app.firstName' })}
                 error={
                   errors.firstName &&
                   formatMessage(
@@ -59,7 +59,7 @@ const Signup = ({
                   id: 'signup.placeholder.lastName'
                 })}
                 value={lastName}
-                label={formatMessage({ id: 'app.last_name' })}
+                label={formatMessage({ id: 'app.lastName' })}
                 error={
                   errors.lastName &&
                   formatMessage(

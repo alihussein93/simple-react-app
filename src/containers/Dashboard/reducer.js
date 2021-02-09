@@ -6,6 +6,8 @@ const initialState = {
 };
 
 const dashboardReducer = (state = initialState, action) => {
+  console.log('action.type ', action.type);
+
   switch (action.type) {
     case actionTypes.GET_USER_PROFILE:
       return {

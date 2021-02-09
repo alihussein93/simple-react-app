@@ -65,8 +65,9 @@ class App extends Component {
         ...prevState,
         isLoading: true
       }));
+
       // todo: add user data to store
-      const userInfo = await APIAdapter.getProfile();
+      // const userInfo = await APIAdapter.getProfile();
       authenticateUser({ accessToken, refreshToken });
       this.setState((prevState) => ({
         ...prevState,

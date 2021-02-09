@@ -6,6 +6,7 @@ import DashboardUI from 'pages/Dashboard';
 import Modal from 'components/Modal';
 
 import APIAdapter from 'utils/api-adapter';
+import Utils from 'utils';
 import Actions from './actions';
 
 class Dashboard extends Component {
@@ -14,23 +15,22 @@ class Dashboard extends Component {
     this.state = {
       isLoading: false,
       isModalVisible: false,
-      modalType: '',
-      data: {
-        id: '39888',
-        firstName: 'ali',
-        lastName: 'hussein',
-        age: 28,
-        dob: '1993-01-13',
-        email: 'alii@gmail.com',
-        isAdmin: false,
-        createdAt: 1612101896045,
-        isActive: true
-      }
+      modalType: ''
     };
   }
 
   onProfileInfoClick = () => {
-    this.getProfileInfo();
+    const { profile } = this.props;
+    if (Utils.isEmptyObject(profile)) {
+      this.getProfileInfo();
+      return;
+    }
+    this.setState((prevState) => ({
+      ...prevState,
+      data: profile,
+      modalType: 'profile',
+      isModalVisible: true
+    }));
   };
 
   onAllPersonsClick = () => {
@@ -56,12 +56,14 @@ class Dashboard extends Component {
         isLoading: true
       }));
       const { status, data } = await APIAdapter.getProfile();
-      getUserProfile(data[0]);
+      const profile = Utils.cleanUserInfo(data[0]);
+      getUserProfile(profile);
       this.setState((prevState) => ({
         ...prevState,
         modalType: 'profile',
         isModalVisible: true,
-        isLoading: false
+        isLoading: false,
+        data: profile
       }));
     } catch (error) {
       console.log(error);
@@ -143,9 +145,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   dispatch,
-  getUserProfile: (profile) => Actions.getProfile(profile),
-  getAllPersons: () => Actions.getAllPersons(),
-  deletePerson: () => Actions.deletePerson()
+  getUserProfile: (profile) => dispatch(Actions.getProfile(profile)),
+  getAllPersons: () => dispatch(Actions.getAllPersons()),
+  deletePerson: () => dispatch(Actions.deletePerson())
 });
 
 Dashboard.propTypes = {

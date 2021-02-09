@@ -45,12 +45,18 @@ const renderProfileModal = ({ onClose, data }) => {
           <FormattedMessage id='modal.profile' />
         </div>
         {Object.keys(data).map((key) => {
-          return (
-            <div className='row flex flex-align-center flex-justify-space-between'>
-              <div className='modal__cell modal__cell--name'>{key}</div>
-              <div className='modal__cell modal__cell--value'>{data[key]}</div>
-            </div>
-          );
+          if (key !== 'isAdmin') {
+            return (
+              <div className='row flex flex-align-center flex-justify-space-between'>
+                <div className='modal__cell modal__cell--name'>
+                  <FormattedMessage id={`app.${key}`} />
+                </div>
+                <div className='modal__cell modal__cell--value'>
+                  {data[key]}
+                </div>
+              </div>
+            );
+          }
         })}
       </div>
       <div className='modal__footer flex flex-justify-center'>
