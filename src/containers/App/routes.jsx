@@ -9,8 +9,8 @@ import Dashboard from 'containers/Dashboard';
 
 const authorizedRoutes = () => (
   <Switch>
-    <Route exact path='/' component={Dashboard} />
-    <Redirect from='*' to='/' />
+    <Route exact path='/home' component={Dashboard} />
+    <Redirect from='*' to='/home' />
   </Switch>
 );
 

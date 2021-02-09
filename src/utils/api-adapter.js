@@ -26,7 +26,7 @@ class Index {
     );
 
     axios.interceptors.response.use(
-      (response) => response,
+      (response) => response.data,
       (error) => {
         let errorMessage = '';
         if (error.response) {

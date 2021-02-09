@@ -112,12 +112,9 @@ class Login extends Component {
         email,
         password
       });
-
       LocalStore.setTokens(tokens);
       APIAdapter.init();
-      authenticateUser({
-        tokens
-      });
+      authenticateUser(tokens);
       this.setState((prevState) => ({
         ...prevState,
         isLoading: false
