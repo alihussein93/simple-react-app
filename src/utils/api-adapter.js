@@ -64,18 +64,18 @@ class Index {
   }
 
   async getProfile() {
-    const res = await axios.get('backend/person');
-    return res;
+    const { data } = await axios.get('backend/person');
+    return data;
   }
 
   async getAllPersons() {
-    const res = await axios.get('backend/persons');
-    return res;
+    const { data } = await axios.get('backend/persons');
+    return data;
   }
 
   async deletePerson(id) {
-    const res = await axios.delete(`backend/person/${id}`);
-    return res;
+    const { data } = await axios.delete(`backend/person/${id}`);
+    return data;
   }
 }
 

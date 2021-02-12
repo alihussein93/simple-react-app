@@ -50,28 +50,32 @@ const Persons = ({ data: { persons }, onBack }) => (
           </tr>
         </thead>
         <tbody className='table__body'>
-          {persons.map(
-            ({
-              id,
-              firstName,
-              lastName,
-              email,
-              dob,
-              isActive,
-              createdAt,
-              updatedAt
-            }) => (
-              <tr className='table__body-row'>
-                <td className='table__body-cell'>{id} </td>
-                <td className='table__body-cell'>{firstName}</td>
-                <td className='table__body-cell'>{lastName} </td>
-                <td className='table__body-cell'>{email} </td>
-                <td className='table__body-cell'>{dob} </td>
-                <td className='table__body-cell'>{isActive} </td>
-                <td className='table__body-cell'>{createdAt} </td>
-                <td className='table__body-cell'>{updatedAt} </td>
-              </tr>
+          {persons.length > 0 ? (
+            persons.map(
+              ({
+                id,
+                firstName,
+                lastName,
+                email,
+                dob,
+                isActive,
+                createdAt,
+                updatedAt
+              }) => (
+                <tr className='table__body-row'>
+                  <td className='table__body-cell'>{id} </td>
+                  <td className='table__body-cell'>{firstName}</td>
+                  <td className='table__body-cell'>{lastName} </td>
+                  <td className='table__body-cell'>{email} </td>
+                  <td className='table__body-cell'>{dob} </td>
+                  <td className='table__body-cell'>{isActive} </td>
+                  <td className='table__body-cell'>{createdAt} </td>
+                  <td className='table__body-cell'>{updatedAt} </td>
+                </tr>
+              )
             )
+          ) : (
+            <tr className='table__body-row'>Sorry, no persons found!</tr>
           )}
         </tbody>
       </table>

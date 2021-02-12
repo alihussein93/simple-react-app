@@ -95,9 +95,9 @@ class App extends Component {
         accessToken: currentAccessToken,
         refreshToken: currentRefreshToken
       });
-      APIAdapter.init();
       LocalStore.setTokens({ accessToken, refreshToken });
       LocalStore.setTokenExpiration(Dates.getTimeAfterOneHour());
+      APIAdapter.init();
       authenticateUser({ accessToken, refreshToken });
     } catch (error) {
       console.log(error);

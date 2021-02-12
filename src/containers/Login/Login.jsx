@@ -9,7 +9,6 @@ import Header from 'components/Header';
 import Validator from 'utils/validator';
 import APIAdapter from 'utils/api-adapter';
 import LocalStore from 'utils/local-store';
-import Dates from 'utils/dates';
 import Actions from './actions';
 
 class Login extends Component {

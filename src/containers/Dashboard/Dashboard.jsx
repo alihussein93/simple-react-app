@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import DashboardUI from 'pages/Dashboard';
 import Modal from 'components/Modal';
+import Header from 'components/Header';
 
 import APIAdapter from 'utils/api-adapter';
 import Utils from 'utils';
@@ -113,6 +114,7 @@ class Dashboard extends Component {
         {isModalVisible && (
           <Modal onClose={this.onModalClose} type={modalType} data={data} />
         )}
+        <Header isAuthenticated={true} />
         <DashboardUI events={events} />
       </>
     );

@@ -36,6 +36,10 @@ class LocalStore {
   getTokenExpiration() {
     return sessionStorage.getItem('tokenExpiration');
   }
+
+  clearSession() {
+    return sessionStorage.clear();
+  }
 }
 
 export default new LocalStore();

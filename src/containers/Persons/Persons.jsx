@@ -29,7 +29,6 @@ class Persons extends Component {
       }));
       const { status, data } = await APIAdapter.getAllPersons();
       const persons = data.map((entry) => Utils.cleanUserInfo(entry));
-      console.log('persons ', persons);
       getAllPersons(persons);
       this.setState((prevState) => ({
         ...prevState,

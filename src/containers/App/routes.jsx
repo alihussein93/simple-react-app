@@ -6,6 +6,7 @@ import Observer from './observer';
 import Landing from 'containers/Landing';
 import Signup from 'containers/Signup';
 import Login from 'containers/Login';
+import Logout from 'containers/Logout';
 import Dashboard from 'containers/Dashboard';
 import Persons from 'containers/Persons';
 
@@ -13,7 +14,8 @@ const authorizedRoutes = (refreshToken) => (
   <>
     <Switch>
       <Route exact path='/home' component={Dashboard} />
-      <Route exact path='/persons' component={Persons} />
+      <Route exact path='/persons' component={Persons} />{' '}
+      <Route exact path='/logout' component={Logout} />
       <Redirect from='*' to='/home' />
     </Switch>
     <Observer refreshToken={refreshToken} />

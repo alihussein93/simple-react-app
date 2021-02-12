@@ -4,7 +4,8 @@ import Events from './action-types';
 const initialState = {
   authStatus: Enums.authStatuses.NONE,
   accessToken: '',
-  accessTokenExpirationDate: '',
+  refreshToken: '',
+  tokenExpiration: '',
   locale: Enums.locales.en_US,
   profile: {}
 };
@@ -24,10 +25,14 @@ const appReducer = (state = initialState, action) => {
         accessToken: action.accessToken,
         refreshToken: action.refreshToken
       };
-    case Events.UAUTHENTICATE_USER:
+    case Events.UNAUTHENTICATE_USER:
       return {
         ...state,
-        authStatus: Enums.authStatuses.UNAUTHENTICATED
+        authStatus: Enums.authStatuses.UNAUTHENTICATED,
+        accessToken: '',
+        tokenExpiration: '',
+        refreshToken: '',
+        profile: {}
       };
     default:
       return state;
