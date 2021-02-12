@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import LoginUI from 'pages/Login';
 import Header from 'components/Header';
@@ -8,6 +9,7 @@ import Header from 'components/Header';
 import Validator from 'utils/validator';
 import APIAdapter from 'utils/api-adapter';
 import LocalStore from 'utils/local-store';
+import Dates from 'utils/dates';
 import Actions from './actions';
 
 class Login extends Component {
@@ -113,6 +115,9 @@ class Login extends Component {
         password
       });
       LocalStore.setTokens(tokens);
+      // // LocalStore.setTokenExpiration(Dates.getTimeAfterOneHour());
+      LocalStore.setTokenExpiration(moment().add('10', 'seconds').unix());
+
       APIAdapter.init();
       authenticateUser(tokens);
       this.setState((prevState) => ({

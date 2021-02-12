@@ -11,6 +11,9 @@ import ArabicLocales from './locales/ar-AE.all';
 import Enums from 'constants/enums';
 import LocalStore from 'utils/local-store';
 import APIAdapter from 'utils/api-adapter';
+import Dates from 'utils/dates';
+
+import Environment from 'constants/env';
 import Actions from './actions';
 import history from '../../history';
 
@@ -65,24 +68,43 @@ class App extends Component {
         unAuthenticateUser();
         return;
       }
-
       this.setState((prevState) => ({
         ...prevState,
         isLoading: true
       }));
-      // todo: add user data to store
-      // const userInfo = await APIAdapter.getProfile();
+
       authenticateUser({ accessToken, refreshToken });
       this.setState((prevState) => ({
         ...prevState,
         isLoading: false
       }));
-      push(history.location.pathname);
+      // push(history.location.pathname);
     } catch (error) {
       console.log(error);
     }
   };
 
+  refreshToken = async () => {
+    try {
+      const { authenticateUser } = this.props;
+      const currentAccessToken = LocalStore.getAccessToken();
+      const currentRefreshToken = LocalStore.getRefreshToken();
+      const {
+        data: { accessToken, refreshToken }
+      } = await APIAdapter.refreshToken({
+        accessToken: currentAccessToken,
+        refreshToken: currentRefreshToken
+      });
+      APIAdapter.init();
+      LocalStore.setTokens({ accessToken, refreshToken });
+      LocalStore.setTokenExpiration(Dates.getTimeAfterOneHour());
+      authenticateUser({ accessToken, refreshToken });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 1613072162
   get Messages() {
     const { locale } = this.props;
     return locale === Enums.locales.ar_AE ? ArabicLocales : EnglishLocales;
@@ -94,7 +116,10 @@ class App extends Component {
       <IntlProvider locale={locale} messages={this.Messages}>
         <div className='container-fluid'>
           <div className='page'>
-            <Routes isAuthenticated={accessToken.length > 0} />
+            <Routes
+              refreshToken={this.refreshToken}
+              isAuthenticated={accessToken.length > 0}
+            />
           </div>
         </div>
       </IntlProvider>

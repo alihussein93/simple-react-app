@@ -26,7 +26,7 @@ class Index {
     );
 
     axios.interceptors.response.use(
-      (response) => response.data,
+      (response) => response,
       (error) => {
         let errorMessage = '';
         if (error.response) {
@@ -38,11 +38,11 @@ class Index {
   }
 
   async login({ email, password }) {
-    const res = await axios.post('backend/login', {
+    const { data } = await axios.post('backend/login', {
       email,
       password
     });
-    return res;
+    return data;
   }
 
   async signup({ firstName, lastName, email, password, dob, age, isAdmin }) {
@@ -56,6 +56,11 @@ class Index {
       isAdmin
     });
     return res;
+  }
+
+  async refreshToken(tokens) {
+    const { data } = await axios.put('/backend/token/refresh', tokens);
+    return data;
   }
 
   async getProfile() {

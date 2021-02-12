@@ -1,32 +1,40 @@
 class LocalStore {
   getLocale() {
-    return localStorage.getItem('locale');
+    return sessionStorage.getItem('locale');
   }
 
   setLocale(locale) {
-    localStorage.setItem('locale', locale);
+    sessionStorage.setItem('locale', locale);
   }
 
   getAccessToken() {
-    return localStorage.getItem('accessToken');
+    return sessionStorage.getItem('accessToken');
   }
 
   setAccessToken(accessToken) {
-    return localStorage.setItem('accessToken', accessToken);
+    return sessionStorage.setItem('accessToken', accessToken);
   }
 
   getRefreshToken() {
-    return localStorage.getItem('refreshToken');
+    return sessionStorage.getItem('refreshToken');
   }
 
   setRefreshToken(refreshToken) {
-    return localStorage.setItem('refreshToken', refreshToken);
+    return sessionStorage.setItem('refreshToken', refreshToken);
   }
 
   setTokens({ accessToken, refreshToken }) {
     this.setAccessToken(accessToken);
     this.setRefreshToken(refreshToken);
     return;
+  }
+
+  setTokenExpiration(tokenExpiration) {
+    return sessionStorage.setItem('tokenExpiration', tokenExpiration);
+  }
+
+  getTokenExpiration() {
+    return sessionStorage.getItem('tokenExpiration');
   }
 }
 
