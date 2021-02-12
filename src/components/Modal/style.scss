@@ -49,4 +49,10 @@
       padding-bottom: 0.5rem;
     }
   }
+  &__error {
+    color: $error-color;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: $xs-font;
+  }
 }

@@ -16,7 +16,9 @@ class Dashboard extends Component {
     this.state = {
       isLoading: false,
       isModalVisible: false,
-      modalType: ''
+      modalType: '',
+      userId: '',
+      serverError: ''
     };
   }
 
@@ -37,7 +39,18 @@ class Dashboard extends Component {
   };
 
   onDeletePersonClick = () => {
-    this.deletePerson();
+    this.setState((prevState) => ({
+      ...prevState,
+      modalType: 'delete',
+      isModalVisible: true
+    }));
+  };
+
+  onInputChange = ({ target: { value } }) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      userId: value
+    }));
   };
 
   onModalClose = () => {
@@ -45,6 +58,10 @@ class Dashboard extends Component {
       ...prevState,
       isModalVisible: false
     }));
+  };
+
+  onDeletePerson = () => {
+    this.deletePerson();
   };
 
   saveData = (data, modalType) => {
@@ -83,11 +100,15 @@ class Dashboard extends Component {
         deletePerson,
         profile: { id }
       } = this.props;
+      const { userId } = this.state;
+      if (userId === id) {
+        return;
+      }
       this.setState((prevState) => ({
         ...prevState,
         isLoading: true
       }));
-      const { status, data } = await APIAdapter.deletePerson(id);
+      const { status, data } = await APIAdapter.deletePerson(userId);
       deletePerson();
       this.setState((prevState) => ({
         ...prevState,
@@ -97,22 +118,34 @@ class Dashboard extends Component {
       console.log(error);
       this.setState((prevState) => ({
         ...prevState,
+        serverError: error.message,
         isLoading: false
       }));
     }
   }
 
   render() {
-    const { isModalVisible, data, modalType } = this.state;
+    const { isModalVisible, data, modalType, userId, serverError } = this.state;
     const events = {
       onProfileInfoClick: this.onProfileInfoClick,
       onAllPersonsClick: this.onAllPersonsClick,
       onDeletePersonClick: this.onDeletePersonClick
     };
+    const modalEvents = {
+      onDeletePerson: this.onDeletePerson,
+      onInputChange: this.onInputChange,
+      onClose: this.onModalClose
+    };
     return (
       <>
         {isModalVisible && (
-          <Modal onClose={this.onModalClose} type={modalType} data={data} />
+          <Modal
+            events={modalEvents}
+            type={modalType}
+            data={data}
+            userId={userId}
+            error={serverError}
+          />
         )}
         <Header isAuthenticated={true} />
         <DashboardUI events={events} />

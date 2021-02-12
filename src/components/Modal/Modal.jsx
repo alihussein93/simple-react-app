@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Button from 'components/Button';
+import Input from 'components/Input';
 
 import './style.scss';
 
@@ -15,7 +16,7 @@ const Modal = (props) => {
           <div
             className='modal__icon modal__icon--close'
             role='presentation'
-            onClick={props.onClose}
+            onClick={props.events.onClose}
           ></div>
         </div>
         {renderModal(props)}
@@ -28,16 +29,14 @@ const renderModal = (props) => {
   switch (props.type) {
     case 'profile':
       return renderProfileModal(props);
-    // case 'persons':
-    //   return renderProfileModal(props);
-    // case 'deletePerson':
-    //   return renderDeleteModal(props);
+    case 'delete':
+      return renderDeleteModal(props);
     default:
       return null;
   }
 };
 
-const renderProfileModal = ({ onClose, data }) => {
+const renderProfileModal = ({ events: { onClose }, data }) => {
   return (
     <>
       <div className='modal__body'>
@@ -68,14 +67,45 @@ const renderProfileModal = ({ onClose, data }) => {
   );
 };
 
+const renderDeleteModal = ({
+  userId,
+  error,
+  events: { onDeletePerson, onInputChange },
+  intl: { formatMessage }
+}) => {
+  return (
+    <>
+      <div className='modal__body'>
+        <div className='modal__title'>
+          <FormattedMessage id='modal.deleteUser' />
+        </div>
+        <Input
+          placeholder={formatMessage({ id: 'modal.userId' })}
+          value={userId}
+          onChange={onInputChange}
+        />
+      </div>
+      <div className='modal__footer flex flex-column flex-justify-center flex-justify-center'>
+        <Button style='inverted' onClick={onDeletePerson}>
+          <FormattedMessage id='app.delete' />
+        </Button>
+        <div className='modal__error'>{error}</div>
+      </div>
+    </>
+  );
+};
+
 Modal.propTypes = {
   type: propTypes.string,
-  onClose: propTypes.func.isRequired,
-  data: propTypes.object
+  events: propTypes.object.isRequired,
+  data: propTypes.object,
+  userId: propTypes.string
 };
 
 Modal.defaultProps = {
-  type: ''
+  type: '',
+  userId: '',
+  data: {}
 };
 
 export default injectIntl(Modal);

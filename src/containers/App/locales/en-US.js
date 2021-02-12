@@ -12,6 +12,7 @@ const locales = {
   'app.updatedAt': 'Updated at',
   'app.id': 'ID',
   'app.isActive': 'Active',
+  'app.delete': 'Delete',
   'app.dob': 'Date of birth',
   'app.placeholder.email': 'e.g. john.doe@example.com',
   'app.placeholder.password': 'your password',
